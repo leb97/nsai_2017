@@ -2,56 +2,56 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <title><g:message code="title" /></title>
 </head>
 <body>
     <content tag="nav">
         <sec:ifAllGranted roles="ROLE_ADMIN">
             <li class="dropdown">
-                <a href="/user">Users</a>
+                <a href="/user"><g:message code="users" /></a>
         </sec:ifAllGranted>
         %{--student menu--}%
         <sec:ifAllGranted roles="ROLE_STUDENT">
             <li class="dropdown">
-                <a href="/score/studentindex">My Scores</a>
+                <a href="/score/studentindex"><g:message code="my.scores" /></a>
         </sec:ifAllGranted>
 
         %{--teacher menu--}%
         <sec:ifAllGranted roles="ROLE_TEACHER">
             <li class="dropdown">
-                <a href="/score/teacherindex">My Subjects</a>
+                <a href="/score/teacherindex"><g:message code="my.subjects" /></a>
         </sec:ifAllGranted>
         %{--not logged in--}%
         <sec:ifNotLoggedIn>
             <li class="dropdown">
-                <a href="/register/register">Sing up</a>
+                <a href="/register/register"><g:message code="my.register" /></a>
         </sec:ifNotLoggedIn>
         <sec:ifNotLoggedIn>
             <li class="dropdown">
-                <a href="/login/index">Sing in</a>
+                <a href="/login/index"><g:message code="my.login" /></a>
         </sec:ifNotLoggedIn>
         %{--all logged in--}%
         <sec:ifLoggedIn>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    Hello <sec:username/>
+                    <g:message code="hello" /> <sec:username/>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/user/show/${sec.loggedInUserInfo(field: 'id')}">Profile</a> </li>
-                    <li>(<g:link controller="logout">Logout</g:link>)</li>
+                    <li><a href="/user/show/${sec.loggedInUserInfo(field: 'id')}"><g:message code="my.profile" /></a> </li>
+                    <li>(<g:link controller="logout"><g:message code="my.logout" /></g:link>)</li>
                 </ul>
             </li>
         </sec:ifLoggedIn>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Language
+                <g:message code="my.language" />
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="?lang=pl">Polish</a> </li>
-                <li><a href="?lang=en">English</a> </li>
-                <li><a href="?lang=de">Deutch</a> </li>
+                <li><a href="?lang=pl"><g:message code="my.language.polish" /></a> </li>
+                <li><a href="?lang=en"><g:message code="my.language.english" /></a> </li>
+                <li><a href="?lang=de"><g:message code="my.language.german" /></a> </li>
             </ul>
         </li>
     </content>
@@ -64,25 +64,22 @@
 
     <div id="content" role="main">
         <section class="row colset-2-its">
-            <h1>Welcome to Grails</h1>
+            <h1><g:message code="title" /></h1>
 
             <p>
-                Congratulations, you have successfully started your first Grails application! At the moment
-                this is the default page, feel free to modify it to either redirect to a controller or display
-                whatever content you may choose. Below is a list of controllers that are currently deployed in
-                this application, click on each to execute its default action:
+                <g:message code="welcome.message" />
             </p>
 
-            <div id="controllers" role="navigation">
-                <h2>Available Controllers:</h2>
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller">
-                            <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
-                        </li>
-                    </g:each>
-                </ul>
-            </div>
+            %{--<div id="controllers" role="navigation">--}%
+                %{--<h2>Available Controllers:</h2>--}%
+                %{--<ul>--}%
+                    %{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">--}%
+                        %{--<li class="controller">--}%
+                            %{--<g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>--}%
+                        %{--</li>--}%
+                    %{--</g:each>--}%
+                %{--</ul>--}%
+            %{--</div>--}%
         </section>
     </div>
 
