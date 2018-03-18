@@ -74,10 +74,10 @@
 					<s2ui:passwordFieldRow name='password2' size='40' labelCodeDefault='Password (again)'/>
 					</tbody>
 				</table>
-					<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.register.submit'/>
 					<recaptcha:ifEnabled>
 						<recaptcha:recaptcha theme="clean"/>
 					</recaptcha:ifEnabled>
+					<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.register.submit'/>
 				</g:else>
 			</s2ui:form>
 		</s2ui:formContainer>

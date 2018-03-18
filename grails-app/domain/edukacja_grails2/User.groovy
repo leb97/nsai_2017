@@ -18,7 +18,7 @@ class User implements Serializable {
     String email
     boolean enabled = true
     boolean accountExpired
-    boolean accountLocked
+    boolean accountLocked = false
     boolean passwordExpired
 
     Set<Role> getAuthorities() {

@@ -9,7 +9,7 @@ grails.plugin.springsecurity.ui.register.postRegisterUrl = '/'
 //grails.plugin.springsecurity.ui.register.emailBody = 'udalo sie zarejestrowac'
 //grails.plugin.springsecurity.ui.register.emailFrom = 'oepco1992@gmail.com'
 //grails.plugin.springsecurity.ui.register.emailSubject = 'Rejestracja'
-grails.plugin.springsecurity.ui.register.defaultRoleNames = ['ROLE_USER']
+grails.plugin.springsecurity.ui.register.defaultRoleNames = ['ROLE_STUDENT']
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**',             access: ['permitAll']],
