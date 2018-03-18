@@ -70,13 +70,14 @@
 					<tbody>
 					<s2ui:textFieldRow name='username' size='40' labelCodeDefault='Username'/>
 					<s2ui:textFieldRow name='email' size='40' labelCodeDefault='E-mail'/>
-					<s2ui:textFieldRow name='firstName' size='40' labelCodeDefault='First Name'/>
-					<s2ui:textFieldRow name='lastName' size='40' labelCodeDefault='Last Name'/>
 					<s2ui:passwordFieldRow name='password' size='40' labelCodeDefault='Password'/>
 					<s2ui:passwordFieldRow name='password2' size='40' labelCodeDefault='Password (again)'/>
 					</tbody>
 				</table>
-				<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.register.submit'/>
+					<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.register.submit'/>
+					<recaptcha:ifEnabled>
+						<recaptcha:recaptcha theme="clean"/>
+					</recaptcha:ifEnabled>
 				</g:else>
 			</s2ui:form>
 		</s2ui:formContainer>

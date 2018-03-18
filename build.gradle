@@ -62,7 +62,8 @@ dependencies {
     compile 'org.grails.plugins:spring-security-ui:3.1.2'
     runtime 'mysql:mysql-connector-java:5.1.36'
     compile 'org.grails.plugins:mail:2.0.0'
-    compile "org.grails.plugins:recaptcha-spring-security:3.0.1"
+//    compile "org.grails.plugins:recaptcha-spring-security:3.0.1"
+    compile "org.grails.plugins:recaptcha:3.1.0"
 
 }
 

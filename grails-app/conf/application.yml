@@ -112,6 +112,8 @@ environments:
             password: ''
             url: "jdbc:mysql://localhost:3306/education2"
             driverClassName: "com.mysql.jdbc.Driver"
+        recaptcha:
+            enabled: true
     test:
         dataSource:
             dbCreate: update
@@ -138,3 +140,8 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+recaptcha:
+    publicKey: "6LetK00UAAAAALO0r_R4B1fNqRrBaCN7pNPMjiAI"
+    privateKey: "6LetK00UAAAAANU1-ACu_fWsC_1tmTGo9Mu_HMeD"
+    includeScript: true
+    includeNoScript: true
