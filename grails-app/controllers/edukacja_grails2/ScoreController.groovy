@@ -24,7 +24,16 @@ class ScoreController {
         respond scoreService.list(params), model:[scoreCount: scoreService.count()]
     }
 
+    def adminIndex(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond scoreService.list(params), model:[scoreCount: scoreService.count()]
+    }
+
     def show(Long id) {
+        respond scoreService.get(id)
+    }
+
+    def showTeacher(Long id) {
         respond scoreService.get(id)
     }
 
@@ -44,14 +53,14 @@ class ScoreController {
             respond score.errors, view:'create'
             return
         }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'score.label', default: 'Score'), score.id])
-                redirect score
-            }
-            '*' { respond score, [status: CREATED] }
-        }
+        redirect(action: "teacherindex")
+//        request.withFormat {
+//            form multipartForm {
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'score.label', default: 'Score'), score.id])
+//                redirect score
+//            }
+//            '*' { respond score, [status: CREATED] }
+//        }
     }
 
     def edit(Long id) {
@@ -88,13 +97,14 @@ class ScoreController {
 
         scoreService.delete(id)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'score.label', default: 'Score'), id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        redirect(action: "teacherindex")
+//        request.withFormat {
+//            form multipartForm {
+//                flash.message = message(code: 'default.deleted.message', args: [message(code: 'score.label', default: 'Score'), id])
+//                redirect action:"index", method:"GET"
+//            }
+//            '*'{ render status: NO_CONTENT }
+//        }
     }
 
     protected void notFound() {

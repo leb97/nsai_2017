@@ -57,19 +57,11 @@
         </li>
     </content>
 
-    <a href="#list-score" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
         <div id="list-score" class="content scaffold-list" role="main">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            %{--<f:table collection="${scoreList}" />--}%
-            <g:set var="currentUser"><sec:username/></g:set>
             <table class='display'>
                 <tr>
                     <th>Score</th>
@@ -77,16 +69,13 @@
                     <th>Student</th>
                 </tr>
                 <g:each in='${scoreList}' var="score">
-                    <g:if test="${currentUser == score.subject.user.username}">
-                        <tr>
-                            <td><a href="/score/showTeacher/${score.id}">${score.score}</a></td>
-                            <td><a href="/subject/showMy/${score.subject.id}">${score.subject.name}</a></td>
-                            <td><a href="/user/showTeacher/${score.user.id}">${score.user.username}</a></td>
-                        </tr>
-                    </g:if>
+                    <tr>
+                        <td><a href="/score/showTeacher/${score.id}">${score.score}</a></td>
+                        <td><a href="/subject/showMy/${score.subject.id}">${score.subject.name}</a></td>
+                        <td><a href="/user/showTeacher/${score.user.id}">${score.user.username}</a></td>
+                    </tr>
                 </g:each>
             </table>
-
         </div>
     </body>
 </html>

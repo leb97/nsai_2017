@@ -16,7 +16,25 @@ class SubjectController {
         respond subjectService.list(params), model:[subjectCount: subjectService.count()]
     }
 
+    def teacherIndex(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond subjectService.list(params), model:[subjectCount: subjectService.count()]
+    }
+
+    def adminIndex(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond subjectService.list(params), model:[subjectCount: subjectService.count()]
+    }
+
+    def showMy(Long id) {
+        respond subjectService.get(id)
+    }
+
     def show(Long id) {
+        respond subjectService.get(id)
+    }
+
+    def showSubjectRO(Long id) {
         respond subjectService.get(id)
     }
 
@@ -36,14 +54,14 @@ class SubjectController {
             respond subject.errors, view:'create'
             return
         }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'subject.label', default: 'Subject'), subject.id])
-                redirect subject
-            }
-            '*' { respond subject, [status: CREATED] }
-        }
+        redirect(action: "teacherIndex")
+//        request.withFormat {
+//            form multipartForm {
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'subject.label', default: 'Subject'), subject.id])
+//                redirect subject
+//            }
+//            '*' { respond subject, [status: CREATED] }
+//        }
     }
 
     def edit(Long id) {
@@ -79,14 +97,14 @@ class SubjectController {
         }
 
         subjectService.delete(id)
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'subject.label', default: 'Subject'), id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        redirect(action: "teacherIndex")
+//        request.withFormat {
+//            form multipartForm {
+//                flash.message = message(code: 'default.deleted.message', args: [message(code: 'subject.label', default: 'Subject'), id])
+//                redirect action:"index", method:"GET"
+//            }
+//            '*'{ render status: NO_CONTENT }
+//        }
     }
 
     protected void notFound() {

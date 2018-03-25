@@ -9,6 +9,10 @@
         <sec:ifAllGranted roles="ROLE_ADMIN">
             <li class="dropdown">
                 <a href="/user"><g:message code="users" /></a>
+            <li class="dropdown">
+                <a href="/subject/adminIndex"><g:message code="my.subjects" /></a>
+            <li class="dropdown">
+                <a href="/score/adminindex"><g:message code="my.scores" /></a>
         </sec:ifAllGranted>
         %{--student menu--}%
         <sec:ifAllGranted roles="ROLE_STUDENT">
@@ -19,7 +23,9 @@
         %{--teacher menu--}%
         <sec:ifAllGranted roles="ROLE_TEACHER">
             <li class="dropdown">
-                <a href="/score/teacherindex"><g:message code="my.subjects" /></a>
+                <a href="/subject/teacherIndex"><g:message code="my.subjects" /></a>
+            <li class="dropdown">
+                <a href="/score/teacherindex"><g:message code="my.scores" /></a>
         </sec:ifAllGranted>
         %{--not logged in--}%
         <sec:ifNotLoggedIn>
@@ -38,7 +44,7 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/user/show/${sec.loggedInUserInfo(field: 'id')}"><g:message code="my.profile" /></a> </li>
+                    <li><a href="/user/showMy/${sec.loggedInUserInfo(field: 'id')}"><g:message code="my.profile" /></a> </li>
                     <li>(<g:link controller="logout"><g:message code="my.logout" /></g:link>)</li>
                 </ul>
             </li>
@@ -70,16 +76,16 @@
                 <g:message code="welcome.message" />
             </p>
 
-            %{--<div id="controllers" role="navigation">--}%
-                %{--<h2>Available Controllers:</h2>--}%
-                %{--<ul>--}%
-                    %{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">--}%
-                        %{--<li class="controller">--}%
-                            %{--<g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>--}%
-                        %{--</li>--}%
-                    %{--</g:each>--}%
-                %{--</ul>--}%
-            %{--</div>--}%
+            <div id="controllers" role="navigation">
+                <h2>Available Controllers:</h2>
+                <ul>
+                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                        <li class="controller">
+                            <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
+                        </li>
+                    </g:each>
+                </ul>
+            </div>
         </section>
     </div>
 

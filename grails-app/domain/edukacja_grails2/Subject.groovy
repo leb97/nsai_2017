@@ -9,4 +9,8 @@ class Subject {
     Set<User> getTeachers() {
         (UserRole.findAllByRole(Role.findByAuthority("ROLE_TEACHER")))*.user as Set<User>
     }
+
+    Set<User> getMyTeachers(String username) {
+        (User.findByUsername(username)) as Set<User>
+    }
 }

@@ -64,7 +64,6 @@ dependencies {
     compile 'org.grails.plugins:mail:2.0.0'
 //    compile "org.grails.plugins:recaptcha-spring-security:3.0.1"
     compile "org.grails.plugins:recaptcha:3.1.0"
-
 }
 
 bootRun {

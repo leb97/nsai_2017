@@ -13,6 +13,9 @@ class BootStrap {
         def student = User.findOrSaveWhere(username: 'student', password: 'student', firstName: 'student', lastName: 'student', email: 'student@student.com')
         def teacher = User.findOrSaveWhere(username: 'teacher', password: 'teacher', firstName: 'teacher', lastName: 'teacher', email: 'teacher@teacher.com')
 
+        def student2 = User.findOrSaveWhere(username: 'student2', password: 'student2', firstName: 'student', lastName: 'student', email: 'student@student.com')
+        def teacher2 = User.findOrSaveWhere(username: 'teacher2', password: 'teacher2', firstName: 'teacher', lastName: 'teacher', email: 'teacher@teacher.com')
+
         def subject = Subject.findOrSaveWhere(name: 'Polski', user: teacher)
         def subject2 = Subject.findOrSaveWhere(name: 'Matemtyka', user: teacher)
 
@@ -32,6 +35,12 @@ class BootStrap {
         }
         if(!teacher.authorities.contains(teacherRole)){
             UserRole.create(teacher, teacherRole, true)
+        }
+        if(!student2.authorities.contains(studentRole)){
+            UserRole.create(student2, studentRole, true)
+        }
+        if(!teacher2.authorities.contains(teacherRole)){
+            UserRole.create(teacher2, teacherRole, true)
         }
     }
     def destroy = {

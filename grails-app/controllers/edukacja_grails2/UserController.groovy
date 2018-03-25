@@ -1,11 +1,13 @@
 package edukacja_grails2
 
 import grails.validation.ValidationException
+
 import static org.springframework.http.HttpStatus.*
 
 class UserController {
 
     UserService userService
+    boolean myView = false
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -15,6 +17,14 @@ class UserController {
     }
 
     def show(Long id) {
+        respond userService.get(id)
+    }
+
+    def showMy(Long id) {
+        respond userService.get(id)
+    }
+
+    def showTeacher(Long id) {
         respond userService.get(id)
     }
 
@@ -45,6 +55,12 @@ class UserController {
     }
 
     def edit(Long id) {
+        myView = false
+        respond userService.get(id)
+    }
+
+    def editMy(Long id) {
+        myView = true
         respond userService.get(id)
     }
 
@@ -60,14 +76,19 @@ class UserController {
             respond user.errors, view:'edit'
             return
         }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                redirect user
-            }
-            '*'{ respond user, [status: OK] }
+        if(myView){
+            redirect(action: "showMy", id: user.id)
         }
+        else {
+            request.withFormat {
+                form multipartForm {
+                    flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), user.id])
+                    redirect user
+                }
+                '*'{ respond user, [status: OK] }
+            }
+        }
+
     }
 
     def delete(Long id) {

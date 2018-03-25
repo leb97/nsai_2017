@@ -72,7 +72,7 @@
                     <g:if test="${currentUser == score.user.username}">
                         <tr>
                             <td>${score.score}</td>
-                            <td><a href="/subject/show/${score.subject.id}">${score.subject.name}</a></td>
+                            <td><a href="/subject/showSubjectRO/${score.subject.id}">${score.subject.name}</a></td>
                         </tr>
                     </g:if>
                 </g:each>

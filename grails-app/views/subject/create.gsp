@@ -7,12 +7,6 @@
     </head>
     <body>
         <a href="#create-subject" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
         <div id="create-subject" class="content scaffold-create" role="main">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
@@ -25,23 +19,30 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
+
             <g:form resource="${this.subject}" method="POST">
                 <fieldset class="form">
                     %{--<f:all bean="subject" />--}%
                     <f:field bean="subject" property="name"/>
+                    <center>
+
                     <label for="user">
                         <g:message code="users.email.label" default="Teacher"/>
                         <span class="required-indicator">*</span>
                     </label>
+                    <g:set var="currentUser"><sec:username/></g:set>
                     <g:select id="user" name="user" value="${subject?.user}"
                               optionValue="username"
                               optionKey="id"
-                              from='${subject.getTeachers()}'></g:select>
+                              from='${subject.getMyTeachers("${currentUser}")}'></g:select>
+                              %{--from='${subject.getTeachers()}'></g:select>--}%
+                    </center>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>
+
         </div>
     </body>
 </html>
