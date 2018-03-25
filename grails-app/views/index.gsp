@@ -8,11 +8,13 @@
     <content tag="nav">
         <sec:ifAllGranted roles="ROLE_ADMIN">
             <li class="dropdown">
+                <a href="/userRole/index"><g:message code="my.admin.roles" /></a>
+            <li class="dropdown">
                 <a href="/user"><g:message code="users" /></a>
             <li class="dropdown">
-                <a href="/subject/adminIndex"><g:message code="my.subjects" /></a>
+                <a href="/subject/adminIndex"><g:message code="my.admin.subjects" /></a>
             <li class="dropdown">
-                <a href="/score/adminindex"><g:message code="my.scores" /></a>
+                <a href="/score/adminIndex"><g:message code="my.admin.scores" /></a>
         </sec:ifAllGranted>
         %{--student menu--}%
         <sec:ifAllGranted roles="ROLE_STUDENT">
@@ -76,16 +78,16 @@
                 <g:message code="welcome.message" />
             </p>
 
-            <div id="controllers" role="navigation">
-                <h2>Available Controllers:</h2>
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller">
-                            <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
-                        </li>
-                    </g:each>
-                </ul>
-            </div>
+            %{--<div id="controllers" role="navigation">--}%
+                %{--<h2>Available Controllers:</h2>--}%
+                %{--<ul>--}%
+                    %{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">--}%
+                        %{--<li class="controller">--}%
+                            %{--<g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>--}%
+                        %{--</li>--}%
+                    %{--</g:each>--}%
+                %{--</ul>--}%
+            %{--</div>--}%
         </section>
     </div>
 

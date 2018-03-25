@@ -6,12 +6,13 @@ import groovy.transform.ToString
 import org.codehaus.groovy.util.HashCodeHelper
 import grails.compiler.GrailsCompileStatic
 
+import javax.persistence.Id
+
 @GrailsCompileStatic
 @ToString(cache=true, includeNames=true, includePackage=false)
 class UserRole implements Serializable {
 
 	private static final long serialVersionUID = 1
-
 	User user
 	Role role
 
@@ -79,9 +80,16 @@ class UserRole implements Serializable {
 			}
 		}
 	}
+	Set<User> getMyUsers() {
+		(User.findAll()) as Set<User>
+	}
+
+	Set<Role> getMyRoles() {
+		(Role.findAll()) as Set<Role>
+	}
 
 	static mapping = {
-		id composite: ['user', 'role']
+//		id composite: ['user', 'role']
 		version false
 	}
 }
