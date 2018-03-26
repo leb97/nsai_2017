@@ -10,7 +10,7 @@
             <li class="dropdown">
                 <a href="/userRole/index"><g:message code="my.admin.roles" /></a>
             <li class="dropdown">
-                <a href="/user"><g:message code="users" /></a>
+                <a href="/user/index"><g:message code="users" /></a>
             <li class="dropdown">
                 <a href="/subject/adminIndex"><g:message code="my.admin.subjects" /></a>
             <li class="dropdown">
