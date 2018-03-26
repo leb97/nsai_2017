@@ -66,7 +66,7 @@
     </content>
         <a href="#create-subject" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div id="create-subject" class="content scaffold-create" role="main">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <h1><g:message code="my.subject.add" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -80,12 +80,10 @@
 
             <g:form resource="${this.subject}" method="POST">
                 <fieldset class="form">
-                    %{--<f:all bean="subject" />--}%
-                    <f:field bean="subject" property="name"/>
-                    <center>
-
+                    <f:field bean="subject" property="name" label="my.subject.subject"/>
+                    %{--<center>--}%
                     <label for="user">
-                        <g:message code="users.email.label" default="Teacher"/>
+                        <g:message code="my.subject.teacher" default="Teacher"/>
                         <span class="required-indicator">*</span>
                     </label>
                     <g:set var="currentUser"><sec:username/></g:set>
@@ -94,10 +92,10 @@
                               optionKey="id"
                               from='${subject.getMyTeachers("${currentUser}")}'></g:select>
                               %{--from='${subject.getTeachers()}'></g:select>--}%
-                    </center>
+                    %{--</center>--}%
                 </fieldset>
                 <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    <g:submitButton name="create" class="save" value="${message(code: 'my.subject.add', default: 'Create')}" />
                 </fieldset>
             </g:form>
 

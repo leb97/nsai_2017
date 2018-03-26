@@ -66,7 +66,7 @@
     </content>
         <a href="#show-userRole" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div id="show-userRole" class="content scaffold-show" role="main">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="my.roledetail.message" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -74,23 +74,18 @@
             <center>
                 <br/>
                 <label for="username">
-                    <g:message code="users.username.label" default="Username"/>
+                    <g:message code="my.roledetail.username" default="Username"/>
                 </label>
                 <f:display name="username" bean="userRole" property="user.username"/>
                 <br/>
                 <br/>
                 <label for="authority">
-                    <g:message code="users.firstname.label" default="Role"/>
+                    <g:message code="my.roledetail.role" default="Role"/>
                 </label>
                 <f:display name="authority" bean="userRole" property="role.authority"/>
                 <br/>
                 <br/>
             </center>
-
-
-
-
-
             <g:form resource="${this.userRole}" method="DELETE">
                 <fieldset class="buttons">
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

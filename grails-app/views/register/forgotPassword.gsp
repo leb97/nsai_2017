@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="layout" content="main"/>
-	<s2ui:title messageCode='spring.security.ui.forgotPassword.title'/>
+	%{--<s2ui:title messageCode='spring.security.ui.forgotPassword.title'/>--}%
 </head>
 <body>
 
@@ -68,15 +68,16 @@
 	<s2ui:form beanName='forgotPasswordCommand'>
 		<g:if test='${emailSent}'>
 		<br/>
-		<g:message code='spring.security.ui.forgotPassword.sent'/>
+		<g:message code='my.reset.mail'/>
 		</g:if>
 		<g:else>
 		<br/>
-		<h3><g:message code='spring.security.ui.forgotPassword.description'/></h3>
+		<h3><g:message code='my.reset.message'/></h3>
 		<table>
-			<s2ui:textFieldRow name='username' size='25' labelCodeDefault='Username'/>
+			<s2ui:textFieldRow name='username' size='25' labelCodeDefault="${message(code: 'my.reset.username', default: 'Username')}"/>
 		</table>
-		<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.forgotPassword.submit'/>
+			<g:submitButton name="submit" class="save" value="${message(code: 'my.reset.reset', default: 'Reset')}" />
+		%{--<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.forgotPassword.submit'/>--}%
 		</g:else>
 	</s2ui:form>
 </s2ui:formContainer>

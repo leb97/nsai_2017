@@ -67,11 +67,11 @@
         <a href="#list-subject" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="my.subject.add" /></g:link></li>
             </ul>
         </div>
         <div id="list-subject" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <h1><g:message code="my.subject.message" /></h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -79,8 +79,8 @@
             <g:set var="currentUser"><sec:username/></g:set>
             <table class='display'>
                 <tr>
-                    <th>Subject</th>
-                    <th>Teacher</th>
+                    <th><g:message code="my.subject.subject"/></th>
+                    <th><g:message code="my.subject.teacher"/></th>
                 </tr>
                 <g:each in='${subjectList}' var="subject">
                     <g:if test="${currentUser == subject.user.username}">

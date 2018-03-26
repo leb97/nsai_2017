@@ -68,12 +68,12 @@
 		<g:hiddenField name='t' value='${token}'/>
 		<div class="sign_in">
 			<br/>
-			<h3><g:message code='spring.security.ui.resetPassword.description'/></h3>
+			<h3><g:message code='my.reset.message2'/></h3>
 			<table>
-				<s2ui:passwordFieldRow name='password' labelCodeDefault='Password'/>
-				<s2ui:passwordFieldRow name='password2' labelCodeDefault='Password (again)'/>
+				<s2ui:passwordFieldRow name='password' labelCodeDefault="${message(code: 'my.register.password', default: 'Password')}"/>
+				<s2ui:passwordFieldRow name='password2' labelCodeDefault="${message(code: 'my.register.password2', default: 'Password2')}"/>
 			</table>
-			<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.resetPassword.submit'/>
+			<g:submitButton name="submit" class="save" value="${message(code: 'my.reset.reset', default: 'Reset')}" />
 		</div>
 	</s2ui:form>
 </s2ui:formContainer>

@@ -3,7 +3,7 @@
     <head>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'score.label', default: 'Score')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
+        <title><g:message code="my.score.scores" /></title>
     </head>
     <body>
     <content tag="nav">
@@ -67,18 +67,18 @@
         <div id="list-score" class="content scaffold-list" role="main">
             <div class="nav" role="navigation">
                 <ul>
-                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                    <li><g:link class="create" action="create"><g:message code="my.score.add" /></g:link></li>
                 </ul>
             </div>
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <h1><g:message code="my.score.scores" /></h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <table class='display'>
                 <tr>
-                    <th>Score</th>
-                    <th>Subject</th>
-                    <th>Student</th>
+                    <th><g:message code="my.score.score"/></th>
+                    <th><g:message code="my.score.subject"/></th>
+                    <th><g:message code="my.score.student"/></th>
                 </tr>
                 <g:each in='${scoreList}' var="score">
                     <tr>

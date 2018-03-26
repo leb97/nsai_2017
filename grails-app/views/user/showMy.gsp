@@ -72,25 +72,25 @@
             <center>
                 <br/>
                 <label for="username">
-                    <g:message code="users.username.label" default="Username"/>
+                    <g:message code="user.username.label" default="Username"/>
                 </label>
                 <f:display name="username" bean="user" property="username"/>
                 <br/>
                 <br/>
                 <label for="firstName">
-                    <g:message code="users.firstname.label" default="First Name"/>
+                    <g:message code="user.firstName.label" default="First Name"/>
                 </label>
                 <f:display name="firstName" bean="user" property="firstName" label="username"/>
                 <br/>
                 <br/>
                 <label for="lastName">
-                    <g:message code="users.lastname.label" default="Last Name"/>
+                    <g:message code="user.lastName.label" default="Last Name"/>
                 </label>
                 <f:display name="lastName" bean="user" property="lastName" label="username"/>
                 <br/>
                 <br/>
                 <label for="email">
-                    <g:message code="users.email.label" default="Email"/>
+                    <g:message code="user.email.label" default="Email"/>
                 </label>
                 <f:display name="email" bean="user" property="email" label="username"/>
                 <br/>

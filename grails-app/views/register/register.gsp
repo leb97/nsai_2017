@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta name="layout" content="main"/>
-	<s2ui:title messageCode='spring.security.ui.register.title'/>
+	%{--<s2ui:title messageCode='my.register.message'/>--}%
 </head>
 <body>
 <content tag="nav">
@@ -64,32 +64,31 @@
 </content>
 
 <div id="content" role="main">
-	<section class="row colset-2-its">
+	%{--<section class="row colset-2-its">--}%
 
 		<s2ui:formContainer type='register' focus='username' width='800px'>
 			<s2ui:form beanName='registerCommand'>
 				<g:if test='${emailSent}'>
 				<br/>
-				<g:message code='spring.security.ui.register.sent'/>
+				<g:message code='my.register.message'/>
 				</g:if>
 				<g:else>
 				<br/>
 				<table>
-					<tbody>
-					<s2ui:textFieldRow name='username' size='40' labelCodeDefault='Username'/>
-					<s2ui:textFieldRow name='email' size='40' labelCodeDefault='E-mail'/>
-					<s2ui:passwordFieldRow name='password' size='40' labelCodeDefault='Password'/>
-					<s2ui:passwordFieldRow name='password2' size='40' labelCodeDefault='Password (again)'/>
-					</tbody>
+					<s2ui:textFieldRow name='username' size='40'  labelCodeDefault="${message(code: 'my.register.username', default: 'Register')}"/>
+					<s2ui:textFieldRow name='email' size='40' labelCodeDefault="${message(code: 'my.register.email', default: 'email')}"/>
+					<s2ui:passwordFieldRow name='password' size='40' labelCodeDefault="${message(code: 'my.register.password', default: 'Password')}"/>
+					<s2ui:passwordFieldRow name='password2' size='40' labelCodeDefault="${message(code: 'my.register.password2', default: 'Password2')}"/>
+
 				</table>
 					<recaptcha:ifEnabled>
 						<recaptcha:recaptcha theme="clean"/>
 					</recaptcha:ifEnabled>
-					<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.register.submit'/>
+					<g:submitButton name="submit" class="save" value="${message(code: 'my.register.register', default: 'Register')}" />
 				</g:else>
 			</s2ui:form>
 		</s2ui:formContainer>
-	</section>
+	%{--</section>--}%
 </div>
 </body>
 </html>
